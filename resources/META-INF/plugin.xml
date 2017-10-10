@@ -27,11 +27,15 @@
   </extensions>
 
   <actions>
-    <!-- Add your actions here -->
-    <action id="ExportLayout" class="com.duseev.intellij.preservelayout.LayoutExporter" text="LayoutExporter"
-            description="LayoutExporter">
+    <group id="PreserveLayoutActionGroup" text="Import/Export Project Layout">
+      <action id="ExportLayout" class="com.duseev.intellij.preservelayout.LayoutExporter" text="Export Layout..."
+              description="Export current project layout">
+      </action>
+      <action id="LayoutImporter" class="com.duseev.intellij.preservelayout.LayoutImporter" text="Import Layout..."
+              description="Import project layout">
+      </action>
       <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ExternalToolsGroup"/>
-    </action>
+    </group>
   </actions>
 
 </idea-plugin>
