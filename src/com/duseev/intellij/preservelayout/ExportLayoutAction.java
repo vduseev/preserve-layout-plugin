@@ -16,6 +16,7 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileWrapper;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.wm.impl.DesktopLayout;
 import com.intellij.openapi.wm.impl.ToolWindowManagerImpl;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -33,7 +34,9 @@ public class ExportLayoutAction extends AnAction {
             if (e.getProject() == null) throw new Exception("No project selected");
 
             ToolWindowManagerImpl mgr = (ToolWindowManagerImpl) ToolWindowManager.getInstance(e.getProject());
-            Element layout = mgr.getState();
+            // Element layout = mgr.getState();
+            DesktopLayout dl = mgr.getLayout();
+            Element layout = dl.writeExternal("layout");
 
             Document doc = new Document();
             doc.addContent(layout);

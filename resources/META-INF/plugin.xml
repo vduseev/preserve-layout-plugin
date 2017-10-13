@@ -5,11 +5,27 @@
   <vendor email="vagiz@duseev.com" url="http://duseev.com">Duseev.com</vendor>
 
   <description><![CDATA[
-      Export and import IDEA project layouts.
+    This plugin provides Export & Import functionality for IntelliJ window layout.
+    Preserve your favorite layout across different projects.
+    Plugin is accessible via View Menu:
+    <ul>
+        <li><b>Export project layout:</b> export current window layout to 'layout.xml'</li>
+        <li><b>Import project layout:</b> import 'layout.xml' into current project</li>
+    </ul>
+    <br/>
+    <b>NOTE (MacOS/Linux):</b> You have to reopen a project after layout import to apply changes.
+    <b>NOTE (Windows):</b> You have to restart the IDE after layout import to apply changes.
+    <br/>
+    Feature improvements:
+    <ul>
+      <li>Get rid of need to restart IDE</li>
+    </ul>
     ]]></description>
 
   <change-notes><![CDATA[
-      Oct 9, 2017 - First version
+        <ul>
+          <li>Oct 13, 2017 - Initial version</li>
+        </ul>
     ]]>
   </change-notes>
 
@@ -27,14 +43,13 @@
   </extensions>
 
   <actions>
-    <group id="PreserveLayoutActionGroup" text="Import/Export Project Layout">
-      <action id="ExportLayout" class="com.duseev.intellij.preservelayout.ExportLayoutAction" text="Export Layout..."
-              description="Export current project layout">
-      </action>
-      <action id="LayoutImporter" class="com.duseev.intellij.preservelayout.ImportLayoutAction" text="Import Layout..."
-              description="Import project layout">
-      </action>
-      <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ExternalToolsGroup"/>
+    <group id="PreserveLayoutActionGroup" text="Import Export Project Layout" description="Preserve Project Layout">
+      <add-to-group group-id="ViewMenu"/>
+      <separator />
+      <action id="ExportLayout" class="com.duseev.intellij.preservelayout.ExportLayoutAction" text="Export Project Layout..."
+              description="Export current project layout"/>
+      <action id="LayoutImporter" class="com.duseev.intellij.preservelayout.ImportLayoutAction" text="Import Project Layout..."
+              description="Import project layout"/>
     </group>
   </actions>
 

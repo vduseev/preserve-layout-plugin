@@ -1,6 +1,5 @@
 package com.duseev.intellij.preservelayout;
 
-import com.intellij.ide.ui.EditorOptionsTopHitProvider;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
@@ -10,16 +9,13 @@ import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.wm.impl.DesktopLayout;
 import com.intellij.openapi.wm.impl.ToolWindowManagerImpl;
 import org.jdom.Document;
 import org.jdom.Element;
-import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
 
 import java.io.File;
-import java.io.IOException;
 
 public class ImportLayoutAction extends AnAction {
 
@@ -65,18 +61,13 @@ public class ImportLayoutAction extends AnAction {
 
     private Element parseLayoutFile(String path) throws Exception {
         Document doc = new SAXBuilder().build(new File(path));
-        Element layout = doc.getRootElement();
-
-        XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
-        outputter.output(doc, System.out);
-
-        return layout;
+        return doc.getRootElement();
     }
 
     private void applyLayoutToProject(Element layout, Project project) {
         ToolWindowManagerImpl mgr = (ToolWindowManagerImpl) ToolWindowManager.getInstance(project);
-        mgr.loadState(layout);
-        System.out.println("State loaded: " + layout.getName());
+        DesktopLayout dl = mgr.getLayout();
+        dl.readExternal(layout);
     }
 
 }
