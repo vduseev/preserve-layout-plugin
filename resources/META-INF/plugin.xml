@@ -28,10 +28,10 @@
 
   <actions>
     <group id="PreserveLayoutActionGroup" text="Import/Export Project Layout">
-      <action id="ExportLayout" class="com.duseev.intellij.preservelayout.LayoutExporter" text="Export Layout..."
+      <action id="ExportLayout" class="com.duseev.intellij.preservelayout.ExportLayoutAction" text="Export Layout..."
               description="Export current project layout">
       </action>
-      <action id="LayoutImporter" class="com.duseev.intellij.preservelayout.LayoutImporter" text="Import Layout..."
+      <action id="LayoutImporter" class="com.duseev.intellij.preservelayout.ImportLayoutAction" text="Import Layout..."
               description="Import project layout">
       </action>
       <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ExternalToolsGroup"/>
