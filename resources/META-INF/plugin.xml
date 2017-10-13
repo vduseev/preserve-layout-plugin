@@ -13,13 +13,14 @@
         <li><b>Import project layout:</b> import 'layout.xml' into current project</li>
     </ul>
     <br/>
-    <b>NOTE (MacOS/Linux):</b> You have to reopen a project after layout import to apply changes.
-    <b>NOTE (Windows):</b> You have to restart the IDE after layout import to apply changes.
+    <b>NOTE:</b> You have to reopen a project after layout import to apply changes.
     <br/>
     Feature improvements:
     <ul>
-      <li>Get rid of need to restart IDE</li>
+      <li>Get rid of need to reopen a projectE</li>
     </ul>
+    </br>
+    Documentation & Sources are available at <a href="https://github.com/vduseev/preserve-layout-plugin">GitHub</a>
     ]]></description>
 
   <change-notes><![CDATA[
