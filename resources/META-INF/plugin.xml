@@ -1,32 +1,34 @@
 <idea-plugin>
   <id>com.duseev.intellij.preservelayout</id>
   <name>Preserve Layout Plugin</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="vagiz@duseev.com" url="http://duseev.com">Duseev.com</vendor>
 
   <description><![CDATA[
     This plugin provides Export & Import functionality for IntelliJ window layout.
     Preserve your favorite layout across different projects.
-    Plugin is accessible via View Menu:
+    </br>
+    Plugin is accessible via <b>Window Menu</b>:
     <ul>
         <li><b>Export project layout:</b> export current window layout to 'layout.xml'</li>
         <li><b>Import project layout:</b> import 'layout.xml' into current project</li>
     </ul>
     <br/>
-    <b>NOTE:</b> You have to reopen a project after layout import to apply changes.
+    <b>Important Note:</b> You have to reopen a project after layout import to apply changes.
     <br/>
     <br/>
     Feature improvements:
     <ul>
-      <li>Get rid of need to reopen a projectE</li>
+      <li>Get rid of need to reopen a project</li>
     </ul>
     </br>
-    Documentation & Sources are available at <a href="https://github.com/vduseev/preserve-layout-plugin">GitHub</a>
+    Plugin documentation & Sources are available at <a href="https://github.com/vduseev/preserve-layout-plugin">GitHub</a>
     ]]></description>
 
   <change-notes><![CDATA[
         <ul>
-          <li>Oct 13, 2017 - Initial version</li>
+          <li>Oct 18, 2017 (ver 1.1) - Fixed <a href="https://github.com/vduseev/preserve-layout-plugin/issues/17">Issue #17<a>: Plugin does not work in CLion</li>
+          <li>Oct 13, 2017 (ver 1.0) - Initial version</li>
         </ul>
     ]]>
   </change-notes>
@@ -36,23 +38,19 @@
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
-  <!-- uncomment to enable plugin in all products
   <depends>com.intellij.modules.lang</depends>
-  -->
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
   </extensions>
 
+  <application-components>
+    <component>
+      <implementation-class>com.duseev.intellij.preservelayout.PreserveLayoutPuginRegistration</implementation-class>
+    </component>
+  </application-components>
+
   <actions>
-    <group id="PreserveLayoutActionGroup" text="Import Export Project Layout" description="Preserve Project Layout">
-      <add-to-group group-id="ViewMenu"/>
-      <separator />
-      <action id="ExportLayout" class="com.duseev.intellij.preservelayout.ExportLayoutAction" text="Export Project Layout..."
-              description="Export current project layout"/>
-      <action id="LayoutImporter" class="com.duseev.intellij.preservelayout.ImportLayoutAction" text="Import Project Layout..."
-              description="Import project layout"/>
-    </group>
   </actions>
 
 </idea-plugin>

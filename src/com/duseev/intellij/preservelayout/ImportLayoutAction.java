@@ -1,5 +1,8 @@
 package com.duseev.intellij.preservelayout;
 
+import com.intellij.icons.AllIcons;
+import com.intellij.ide.plugins.PluginManagerMain;
+import com.intellij.ide.ui.UISettings;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
@@ -11,13 +14,19 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.wm.impl.DesktopLayout;
 import com.intellij.openapi.wm.impl.ToolWindowManagerImpl;
+import com.intellij.util.ui.UIUtil;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
+import javax.swing.*;
 import java.io.File;
 
 public class ImportLayoutAction extends AnAction {
+
+    ImportLayoutAction(String name) {
+        super(name);
+    }
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -26,11 +35,13 @@ public class ImportLayoutAction extends AnAction {
                 e.getProject(),
                 null,
                 file -> importLayoutFileToProject(file.getCanonicalPath(), e.getProject()));
+
     }
 
     @Override
     public void update(AnActionEvent e) {
         e.getPresentation().setEnabled(e.getProject() != null);
+        e.getPresentation().setIcon(AllIcons.Actions.Install);
         super.update(e);
     }
 

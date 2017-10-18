@@ -1,5 +1,6 @@
 package com.duseev.intellij.preservelayout;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.EditorOptionsTopHitProvider;
 import com.intellij.notification.Notification;
 import com.intellij.notification.Notifications;
@@ -27,6 +28,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ExportLayoutAction extends AnAction {
+
+    ExportLayoutAction(String name) {
+        super(name);
+    }
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -86,6 +91,7 @@ public class ExportLayoutAction extends AnAction {
     @Override
     public void update(AnActionEvent e) {
         e.getPresentation().setEnabled(e.getProject() != null);
+        e.getPresentation().setIcon(AllIcons.Actions.Export);
         super.update(e);
     }
 
